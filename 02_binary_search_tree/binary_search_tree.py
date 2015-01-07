@@ -5,6 +5,7 @@ class Node:
         self.right_child = None
 
 def binary_insert(root, node):
+    """
     if not root:
         root = node
     else:
@@ -18,6 +19,14 @@ def binary_insert(root, node):
                 root.right_child = node
             else:
                 binary_insert(root.right_child, node)
+    """
+    if root is None:
+        return node
+    if root.val > node.val:
+        root.left_child = binary_insert(root.left_child, node)
+    else:
+        root.right_child = binary_insert(root.right_child, node)
+    return root
 
 def in_order_print(root):
     if not root:
@@ -38,6 +47,8 @@ def main():
     binary_insert(r, Node(7))
     binary_insert(r, Node(1))
     binary_insert(r, Node(5))
+    binary_insert(r, Node(1))
+    binary_insert(r, Node(2))
 
     print "in order:"
     in_order_print(r)
